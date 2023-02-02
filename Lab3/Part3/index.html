@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // ------------------------------------ Array Mothods ------------------------------------
+      // 1-concat method it merge the two arraies and does't change any then return a new array.
+      var arr1 = ["a", "b", "c"];
+      var arr2 = ["d", "e", "f"];
+      var arr3 = arr1.concat(arr2);
+      console.log("concat method: " + arr3);                    // concat method: a,b,c,d,e,f
+
+      // 2- toString converts an array to a string of comma separated array values.
+      console.log("toString method: " + arr1.toString());       // toString method: a,b,c
+
+      // 3- join method joins all array elements into a string but we can also specify the separator.
+      console.log("join method: " + arr1.join("*"));            // join method: a*b*c
+
+      // 4- entries method returns a new Array Iterator object that contains the key/value pairs for each index in the array.
+      const iterator1 = arr1.entries();
+      console.log("entries method: " + iterator1.next().value); // entries method: 0,a
+
+      // 5- every method tests whether all elements in the array pass the test implemented by the provided function. It returns a Boolean value.
+      const isBelowThreshold = (currentValue) => currentValue < 40;
+      const arr = [1, 30, 39, 29, 10, 13];
+      console.log(arr.every(isBelowThreshold));                 // true
+
+      // 6- filter method creates a shallow copy of a portion of a given array, filtered down to just the elements from the given array that pass the test implemented by the provided function.
+      const result = arr.filter(num => num >= 20 );
+      console.log(result);                                      // [30, 39, 29]     
+
+      // 7- flat method creates a new array with all sub-array elements concatenated into it recursively up to the specified depth. 
+      var newArr = [1, 30, 39, [29, 10, 13]];
+      console.log(newArr.flat())                                // [1, 30, 39, 29, 10, 13]
+      newArr = [1, 30, 39, [[29, 10, 13]]];
+      console.log(newArr.flat())                                // [1, 30, 39, Array(3)]   Array(3) = [29, 10, 13]
+
+      // 8- fill() method changes all elements in an array to a static value, from a start index (default 0) to an end index (default array.length). It returns the modified array. 
+      console.log(newArr.fill(0, 2, 5));                        // [1, 30, 0, 0]
+
+      // 9- forEach method executes a provided function once for each array element. 
+      arr.forEach(element => console.log(element));             // 1
+                                                                // 30
+                                                                // 39
+                                                                // 10
+                                                                // 13
+
+      // 10- at() method takes an integer value and returns the item at that index, allowing for positive and negative integers. Negative integers count back from the last item in the array.
+      console.log(arr.at(-3));                                  // 29       
+
+      // ----------------------------------------------------------------------------------------
+      // ------------------------------------ Object Mothods ------------------------------------
+      // 1- Object.hasOwn static method returns true if the specified object has the indicated property as its own property. If the property is inherited, or does not exist, the method returns false.
+      const person = {
+        isHuman: true,
+        name: "nade",
+        age: 24,
+      };
+
+      console.log(Object.hasOwn(person, "prop"));               // false
+      console.log(Object.hasOwn(person, "name"));               // true
+
+      // 2- propertyIsEnumerable method returns a boolean indicating whether the specified property is the object is enumerable own property.
+      console.log(person.propertyIsEnumerable("age"));          // true
+
+      // 3- Object.create static method creates a new object, using an existing object as the prototype of the newly created object.
+      const obj = Object.create(person);
+      obj.name = "menna";
+      console.log(obj);                                         // {name: 'menna'}
+
+      // 4- Object.assign static method copies all enumerable own properties from one or more source objects to a target object. It returns the modified target object.
+      const obj2 = {
+        isHuman: true,
+        name: "hager",
+      };
+      const returnedTarget = Object.assign(obj2, person);
+      console.log(obj2);                                        // {isHuman: true, name: 'nade', age: 24}
+
+      // 5- Object.freeze static method freezes an object. Freezing an object prevents extensions and makes existing properties non-writable and non-configurable.
+      Object.freeze(obj);
+      obj.name = "nour";
+      console.log(obj);                                         // {name: 'menna'}
+
+      // 6- Object.entries static method returns an array of a given object's own enumerable string-keyed property key-value pairs.
+      for (const [key, value] of Object.entries(person)) {
+        console.log(`${key}: ${value}`);                        // "isHuman: true"
+      }                                                         // "name: nade"
+                                                                // "age: 42"
+
+      // 7- Object.isExtensible static method determines whether the object can have new properties added to it).
+      console.log(Object.isExtensible(obj));                    //false
+      console.log(Object.isExtensible(person));                 //true
+
+      // 8- Object.is static method determines whether two values are the same value.
+      console.log(Object.is(obj2.name, person.name));           // true
+      console.log(Object.is(obj2, person));                     // false
+
+      // 9- Object.seal static method that prevents extensions and makes existing properties non-configurable. A sealed object has a fixed set of properties: new properties cannot be added, existing properties cannot be removed, their enumerability and configurability cannot be changed, and its prototype cannot be re-assigned. Values of existing properties can still be changed as long as they are writable.
+      Object.seal(obj2);
+      obj2.age = 25;
+      console.log(obj2);                                        //{isHuman: true, name: 'nade', age: 25}
+      delete obj2.age;
+      console.log(obj2);                                        //{isHuman: true, name: 'nade', age: 25}
+
+      // 10- Object.isSealed static method determines if an object is sealed.
+      console.log(Object.isSealed(person));                     //false
+      console.log(Object.isSealed(obj2));                       //true
+
+    </script>
+  </body>
+</html>

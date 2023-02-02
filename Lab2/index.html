@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      AgeFunc();
+      countVowels();
+      convertFron24To12();
+
+      //task 1
+      function AgeFunc() {
+        do {
+          var response = prompt("Please enter your age: ");
+          if (response) {
+            var age = Number(response);
+            if (age >= 1) {
+              if (age <= 10) {
+                alert("You are child..");
+              } else if (age <= 18) {
+                alert("You are teenager..");
+              } else if (age <= 50) {
+                alert("You are grown up..");
+              } else if (age > 50) {
+                alert("You are old..");
+              }
+            } else {
+              alert("you should enter only positive numbers!!!");
+            }
+          }
+        } while (response);
+      }
+
+      //task 2
+      function countVowels() {
+        var str = prompt("Enter String: ");
+        var vowels = ["a", "e", "i", "o", "u"];
+        var count = 0;
+        if (str) {
+          for (let char of str.toLocaleLowerCase()) {
+            if (vowels.includes(char)) {
+              count++;
+            }
+          }
+          if (count > 0) {
+            alert(`The string you entered contains ${count} vowels.`);
+          } else {
+            alert("The string you entered contains no vowels.");
+          }
+        }
+      }
+
+      //task 3
+      function convertFron24To12() {
+        var response = prompt("Please enter the time");
+        if (response) {
+          var time = Number(response);
+          if (time >= 0 && time <= 24) {
+            if (time <= 12) {
+              alert(`time is ${time} AM.`);
+            } else {
+              time -= 12;
+              alert(`time is ${time} PM.`);
+            }
+          } else {
+            alert("Wrong Entery...");
+          }
+        }
+      }
+    </script>
+  </body>
+</html>

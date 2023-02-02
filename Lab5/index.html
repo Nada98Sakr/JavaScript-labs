@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        class Person {
+            #healthRate;
+            constructor(fullName, age, money, sleepMode, healthRate) {
+                this.fullName = fullName;
+                this.age = age;
+                this.money = money;
+                this.sleepMode = sleepMode;
+                this.#healthRate = healthRate;
+            };
+            sleep(hours) {
+                if(hours == 7) {this.sleepMode = "happy";}
+                else if(hours < 7) {this.sleepMode = "tired";}
+                else {this.sleepMode = "lazy";}
+            };
+            eat(meals) {
+                if(meals == 3) {this.#healthRate = 100;}
+                else if(meals ==2) {this.#healthRate = 75;}
+                else if(meals ==1) {this.#healthRate = 50;}
+            };
+            buy(items) {
+                this.money -= 10*items;
+            };
+            get healthRate(){
+                return this.#healthRate;
+            }
+
+            set healthRate(health){
+                this.#healthRate = (health >= 0 && health <= 100) ? health : 100;
+            }
+        }
+
+        class Employee extends Person{
+            #salary;
+
+            constructor(id, fullName, age, email, salary, money, workMode, isManager, sleepMode, healthRate){
+                super(fullName, age, money, sleepMode, healthRate);
+                this.id = id;
+                this.email = email;
+                this.#salary = salary;
+                this.workMode = workMode;
+                this.isManager = (isManager == "mngr")? true : false;
+            };
+
+            work(hours){
+                if(hours == 8) {this.workMode = "happy";}
+                else if(hours > 7) {this.workMode = "tired";}
+                else {this.workMode = "lazy";}
+            };
+
+            get salary(){
+                return this.#salary;
+            }
+
+            set salary(sal){
+                this.#salary = (sal >= 1000) ? sal : 1000;
+            }
+        }
+
+        class Office{
+            constructor(name, employees)
+            {
+                this.name = name;
+                this.employees = employees;
+            };
+
+            getAllEmployees(){
+                for(let emp of this.employees){
+                    DisplayEmpData(emp);
+                }
+            };
+            getEmployee(empId){
+                for(let emp of this.employees){
+                    if(emp.id == empId)
+                    {
+                        DisplayEmpData(emp);
+                        break;
+                    }
+                }
+            };
+            fire(empId){
+                var index = 0;
+                for(let emp of this.employees){
+                    if(emp.id == empId)
+                    {
+                        return this.employees.splice(index, 1);
+                    }
+                    index++;
+                }
+            };
+            hire(emp){
+                this.employees.push(emp);
+            };
+        }
+
+        function InputEmployeeData(mngr){
+            var id = Number(prompt("Enter Employee ID:"));
+            var name = prompt("Enter Employee name:");
+            var age = Number(prompt("Enter Employee age:"));
+            var email = prompt("Enter Employee email:");
+            var salary = Number(prompt("Enter Employee salary:"));
+            while(salary < 1000)
+            {
+                salary = Number(prompt("Salary should be greater than or equal 1000 \nplease enter salary again:"));
+            }
+            var money = prompt("Enter Employee money:");
+            var workMode = prompt("Enter Employee workMode:");
+            var sleepMode = prompt("Enter Employee sleepMode:");
+            var healthRate = Number(prompt("Enter Employee healthRate:"));
+            while(healthRate < 0 || healthRate > 100)
+            {
+                healthRate = Number(prompt("healthRate should be between 0 and 100\nplease enter again:"));
+            }
+            
+            return new Employee(id, name, age, email, salary, money, workMode, mngr, sleepMode, healthRate);
+        }
+    
+        function DisplayEmpData(emp)
+        {
+            console.log("Employee Information:");
+            console.log(`   ID: ${emp.id}`);
+            console.log(`   name: ${emp.fullName}`);
+            console.log(`   age: ${emp.age}`);
+            console.log(`   email: ${emp.email}`);
+            if(!emp.isManager) console.log(`   salary: ${emp.salary}`);
+            console.log(`   money: ${emp.money}`);
+            console.log(`   workMode: ${emp.workMode}`);
+            console.log(`   isManager: ${emp.isManager}`);
+            console.log(`   sleepMode: ${emp.sleepMode}`);
+            console.log(`   healthRate: ${emp.healthRate}`);
+        }
+
+        function Menu(){
+            let flag = 1;
+            do{
+                response = prompt(`Please enter: 
+                                        \n1- (add) to hire new employee.
+                                        \n2- (getOne) to search for employee.
+                                        \n3- (getAll) to show all employees 
+                                        \n3- (fire) to fire an employee.
+                                        \n4- quit.`);
+
+                if(response == "" || response === null){
+                    flag = 0;
+                }
+
+                else{
+                    switch (response) {
+                        case "add":
+                            let mngr = prompt("please enter:\n1- mngr to add manager.\n2- nrml to employee.");
+                            office1.hire(InputEmployeeData(mngr));
+                            break;
+                        
+                        case "getOne":
+                            let id = Number(prompt("Please enter id to search with: "));
+                            office1.getEmployee(id);
+                            break;
+
+                        case "getAll":
+                            office1.getAllEmployees();
+                            break;
+
+                        case "fire":
+                            let firedId = Number(prompt("Please enter id to fire employee: "));
+                            DisplayEmpData(office1.fire(firedId)[0]);
+                            break;
+                    
+                        case "quit":
+                            flag = 0;
+                            break;
+
+                        default:
+                            prompt("wrong entery please try again...")
+                            break;
+                    }
+                }
+            }while(flag);
+            
+        }
+
+        let e1 = new Employee(1, "nada saeed", 24, "nada@gmail.com", 3000, 4000, "tired", "nrml", "tired", 85);
+        let e2 = new Employee(2, "nourhan saeed", 27, "nourhan@gmail.com", 3000, 4000, "tired", "nrml", "happy", 95);
+        let e3 = new Employee(3, "Salma mohamed", 23, "salma@gmail.com", 3000, 4000, "tired", "nrml", "tired", 65);
+        let e4 = new Employee(4, "mahmoud mohamed", 21, "mahmoud@gmail.com", 3000, 4000, "tired", "mngr", "happy", 75);
+        let e5 = new Employee(5, "mohab mohamed", 16, "mohab@gmail.com", 3000, 4000, "tired", "mngr", "happy", 75);
+
+        let emps = [e1, e2, e3, e4, e5];
+        let office1 = new Office("off1", emps);
+        Menu();
+    </script>
+</body>
+</html>

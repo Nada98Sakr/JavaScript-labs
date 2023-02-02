@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      var shape = prompt(
+        "Enter the name of the shape you want to calculate the area for:"
+      );
+      
+      var area = 0,
+          dim1 = 0,
+          dim2 = 0,
+          dim3 = 0;
+
+      switch (shape.toLowerCase()) {
+        case "circle":
+          dim1 = Number(prompt("Please enter the radius of the circule"));
+          if (dim1 > 0) {
+            area = 3.14 * dim1 * dim1;
+          }
+          break;
+
+        case "triangle":
+          dim1 = Number(prompt("Please enter the base of the triangle"));
+          dim2 = Number(prompt("Please enter the height of the triangle"));
+          if (dim1 > 0 && dim2 > 0) {
+            area = 0.5 * dim1 * dim2;
+          }
+          break;
+
+        case "square":
+          dim1 = Number(
+            prompt("Please enter the length of the side of the square")
+          );
+          if (dim1 > 0) {
+            area = dim1 * dim1;
+          }
+          break;
+
+        case "rectangle":
+          dim1 = Number(prompt("Please enter the length of the rectangle"));
+          dim2 = Number(prompt("Please enter the width of the rectangle"));
+          if (dim1 > 0 && dim2 > 0) {
+            area = dim1 * dim2;
+          }
+          break;
+
+        case "parallelogram":
+          dim1 = Number(
+            prompt("Please enter the length of the length of the parallelogram")
+          );
+          dim2 = Number(
+            prompt("Please enter the length of the height of the parallelogram")
+          );
+          area = dim1 * dim2;
+          break;
+
+        case "trapezium":
+          dim1 = Number(
+            prompt(
+              "Please enter the length of the first parallel side of the trapezium"
+            )
+          );
+          dim2 = Number(
+            prompt(
+              "Please enter the length of the second parallel side of the trapezium"
+            )
+          );
+          dim3 = Number(prompt("Please enter the height of the trapezium"));
+          area = 0.5 * (dim1 + dim2) * dim3;
+          break;
+
+        case "ellipse":
+          dim1 = Number(
+            prompt("Please enter the length of the minor axis of the ellipse")
+          );
+          dim2 = Number(
+            prompt("Please enter the length of the major axis of the ellipse")
+          );
+          area = 3.14 * dim1 * dim2;
+          break;
+
+        default:
+          alert(`Shape ${shape} not found..`);
+          break;
+      }
+
+      if (area != 0) {
+        alert(`area of ${shape} = ${area}`);
+      }
+    </script>
+  </body>
+</html>

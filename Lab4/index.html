@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+        // using constructor function:
+        function Person1(fullName, money, sleepMode, healthRate) {
+            this.fullName = fullName;
+            this.money = money;
+            this.sleepMode = sleepMode;
+            this.healthRate = healthRate;
+        }
+
+        Person1.prototype.sleep = function(hours){
+            if(hours == 7) {this.sleepMode = "happy";}
+            else if(hours < 7) {this.sleepMode = "tired";}
+            else {this.sleepMode = "lazy";}
+        }
+
+        Person1.prototype.eat = function(meals){
+            if(meals == 3) {this.healthRate = 100;}
+            else if(meals ==2) {this.healthRate = 75;}
+            else if(meals ==1) {this.healthRate = 50;}
+        };
+
+        Person1.prototype.buy = function(items){
+            this.money -= 10*items;
+            
+        };
+
+        const p1 = new Person1("Nada Saeed", 400, "tired", 75);
+        console.log(p1);               // {fullName: 'Nada Saeed', money: 400, sleepMode: 'tired', healthRate: 75}   
+        p1.eat(3)
+        console.log(p1);               // {fullName: 'Nada Saeed', money: 400, sleepMode: 'tired', healthRate: 100}
+
+
+        //------------------------------------------------------------------------------------------------------------
+        // using Class:
+        class Person2 {
+            constructor(fullName, money, sleepMode, healthRate) {
+                this.fullName = fullName;
+                this.money = money;
+                this.sleepMode = sleepMode;
+                this.healthRate = healthRate;
+            }
+
+            sleep(hours) {
+                if(hours == 7) {this.sleepMode = "happy";}
+                else if(hours < 7) {this.sleepMode = "tired";}
+                else {this.sleepMode = "lazy";}
+            }
+            eat(meals) {
+                if(meals == 3) {this.healthRate = 100;}
+                else if(meals ==2) {this.healthRate = 75;}
+                else if(meals ==1) {this.healthRate = 50;}
+            };
+            buy(items) {
+                this.money -= 10*items;
+            }
+        }
+        
+        const p2 = new Person2("Nada Saeed", 500, "happy", 100);
+        console.log(p2);               // {fullName: 'Nada Saeed', money: 500, sleepMode: 'happy', healthRate: 100}
+        p2.sleep(5);
+        console.log(p2);               // {fullName: 'Nada Saeed', money: 500, sleepMode: 'tired', healthRate: 100}
+
+        //------------------------------------------------------------------------------------------------------------
+        // using OLOO
+        const Person3 = {
+            init(fullName, money, sleepMode, healthRate) {
+                this.fullName = fullName;
+                this.money = money;
+                this.sleepMode = sleepMode;
+                this.healthRate = healthRate;
+            },
+
+            sleep(hours){
+                if(hours == 7) {this.sleepMode = "happy";}
+                else if(hours < 7) {this.sleepMode = "tired";}
+                else {this.sleepMode = "lazy";}
+            },
+            eat(meals){
+                if(meals == 3) {this.healthRate = 100;}
+                else if(meals ==2) {this.healthRate = 75;}
+                else if(meals ==1) {this.healthRate = 50;}
+            },
+            buy(items){
+                this.money -= 10*items;
+            }
+        };
+        const p3 = Object.create(Person3);
+        p3.init("Nada Saeed", 500, "lazy", 50);
+        console.log(p3);               // {fullName: 'Nada Saeed', money: 500, sleepMode: 'lazy', healthRate: 50}
+        p3.buy(2);
+        console.log(p3);               // {fullName: 'Nada Saeed', money: 480, sleepMode: 'lazy', healthRate: 50}
+
+        //------------------------------------------------------------------------------------------------------------
+        // usnig Factory
+        function Person4(fullName, money, sleepMode, healthRate) {
+            return {
+                fullName,
+                money,
+                sleepMode,
+                healthRate,
+
+                sleep(hours){
+                    if(hours == 7) {this.sleepMode = "happy";}
+                    else if(hours < 7) {this.sleepMode = "tired";}
+                    else {this.sleepMode = "lazy";}
+                },
+                eat(meals){
+                    if(meals == 3) {this.healthRate = 100;}
+                    else if(meals ==2) {this.healthRate = 75;}
+                    else if(meals ==1) {this.healthRate = 50;}
+                },
+                buy(items){
+                    this.money -= 10*items;
+                }
+            };
+        }
+        const p4 = Person4("Nada Saeed", 500, "happy", 100);
+        console.log(p4);               // {fullName: 'Nada Saeed', money: 500, sleepMode: 'happy', healthRate: 100, sleep: ƒ, …}
+        p4.sleep(9);
+        console.log(p4);               // {fullName: 'Nada Saeed', money: 500, sleepMode: 'lazy', healthRate: 100, sleep: ƒ, …}
+    </script>
+  </body>
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        // ---------------------------------------- using function ----------------------------------------
+        // -------------------------------------------- Part 1 --------------------------------------------
+        function Shape1(name, sides, sideLength){
+            this.name = name; 
+            this.sides = sides; 
+            this.sideLength = sideLength;
+        }
+        Shape1.prototype.calcPerimeter = function() {
+            let Perimeter = this.sides * this.sideLength;
+            console.log(`the perimiter of ${this.name} = ${Perimeter}`);
+        }
+        
+        let sqr1 = new Shape1("square", 4, 5);
+        sqr1.calcPerimeter();                                   // the perimiter of square = 20
+        let tri1 = new Shape1("triangle", 3, 3);
+        tri1.calcPerimeter();                                   // the perimiter of triangle = 9
+
+        // -------------------------------------------- Part 2 --------------------------------------------
+        function square1(sideLength){
+            Shape1.call(this, "square", 4, sideLength);
+        }
+
+        square1.prototype = Object.create(Shape1.prototype);
+        square1.prototype.constructor = square1;
+        square1.prototype.calcArea = function(){
+            let area = this.sideLength * this.sideLength;
+            console.log(`the area of ${this.name} = ${area}`);
+        }
+
+        let sqr2 = new square1(5);
+        sqr2.calcPerimeter();                                  // the perimiter of square = 20
+        sqr2.calcArea();                                       // the area of square = 25
+
+        // ------------------------------------------------------------------------------------------------
+        // ------------------------------------------ using class -----------------------------------------
+        // -------------------------------------------- Part 1 --------------------------------------------
+        class Shape2{
+            constructor(name, sides, sideLength){
+                this.name = name; 
+                this.sides = sides; 
+                this.sideLength = sideLength; 
+            }
+            calcPerimeter(){
+                let Perimeter = this.sides * this.sideLength;
+                console.log(`the perimiter of ${this.name} = ${Perimeter}`);
+            }
+        }
+
+        let sqr3 = new Shape2("square", 4, 5);
+        sqr3.calcPerimeter();                                   // the perimiter of square = 20
+        let tri2 = new Shape2("triangle", 3, 3);
+        tri2.calcPerimeter();                                   // the perimiter of triangle = 9
+        
+        // -------------------------------------------- Part 2 --------------------------------------------
+        class square2 extends Shape2{
+            constructor(sideLength) {
+                super("square", 4, sideLength);
+            }
+            calcArea(){
+                let area = this.sideLength * this.sideLength;
+                console.log(`the area of ${this.name} = ${area}`);
+            }
+        }
+        let sqr4 = new square2(5);
+        sqr4.calcPerimeter();                                  // the perimiter of square = 20
+        sqr4.calcArea();                                       // the area of square = 25
+
+        // ------------------------------------------------------------------------------------------------
+        // -------------------------------------------- Part 3 --------------------------------------------
+        class Triple{
+            static customName  = "Tripler";
+            static description = "I triple any number you provide";
+            static calculate(n){
+                let num = n ? n : 1;
+                return num  * 3; 
+            }
+        }
+
+        class SquaredTriple extends Triple{
+            static longDescription;
+            static description = "I square the triple of any number you provide";
+            static calculate(n){
+                return Triple.calculate(n)  * Triple.calculate(n) ; 
+            }
+        }
+
+        console.log(Triple.description);                       // I triple any number you provide
+        console.log(Triple.calculate());                       // 3 
+        console.log(Triple.calculate(3));                      // 9 
+
+        console.log(SquaredTriple.description);                // 'I square the triple of any number you provide' 
+        console.log(SquaredTriple.calculate());                // 9
+        console.log(SquaredTriple.calculate(3));               // 81
+        console.log(SquaredTriple.longDescription);            // undefined 
+        console.log(SquaredTriple.customName);                 // Tripler
+        
+    </script>
+</body>
+</html>

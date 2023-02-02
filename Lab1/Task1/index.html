@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      var firstName = prompt("Pleasr enetr your first name:");
+      var lastName = prompt("Pleasr enetr your last name:");
+      if (firstName != null && lastName != null) {
+        alert(`Your name is ${firstName} ${lastName}`);
+        var year = Number(prompt("Pleasr enter your birth year:"));
+        if (isNaN(year) || year == null) {
+          alert("you didn't enter your full name");
+        }
+      } else {
+        var age = 2023 - year;
+        document.write(
+          `Welcome ${firstName} ${lastName} you are ${age} years old`
+        );
+      }
+    </script>
+  </body>
+</html>

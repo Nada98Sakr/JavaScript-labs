@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      var PhoneBook = [
+        {
+          Name: "Nada",
+          Phone: "010962",
+        },
+      ];
+
+      do {
+        var operation = prompt(
+          "Please enter the operation you want 'add', 'search': "
+        );
+        let contact = { Name: null, Phone: null };
+
+        flag = false;
+        switch (operation) {
+          case "add":
+            contact.Name = prompt("Enter the name of the contact:");
+            contact.Phone = prompt("Enter the phone number you want to add:");
+            PhoneBook.push(contact);
+            alert("New contact added.");
+            break;
+
+          case "search":
+            var searchKey = prompt("Enter the name or phone you are searching for:");
+            let foundFlag = false;
+            for (let i = 0; i < PhoneBook.length; i++) {
+              contact = PhoneBook[i];
+              if (searchKey == contact.Name || searchKey == contact.Phone) {
+                alert(`Name: ${contact.Name} \nphone: ${contact.Phone}`);
+                foundFlag = true;
+                break;
+              }
+            }
+            if (foundFlag == false) {
+              alert("contact not found...");
+            }
+            break;
+        }
+      } while (operation);
+    </script>
+  </body>
+</html>

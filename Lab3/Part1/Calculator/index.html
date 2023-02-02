@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      var Num1 = Number(prompt("Please Enter first number: "));
+      var operator = prompt("Please enter the operator:");
+
+      do {
+        var Num2 = Number(prompt("Please Enter second number: "));
+        switch (operator) {
+          case "+":
+            result = Num1 + Num2;
+            alert(`the sum of ${Num1} and ${Num2} = ${result}`);
+            break;
+
+          case "-":
+            result = Num1 - Num2;
+            alert(`the subtraction of ${Num1} and ${Num2} = ${result}`);
+            break;
+
+          case "*":
+            result = Num1 * Num2;
+            alert(`the multiplication of ${Num1} and ${Num2} = ${result}`);
+            break;
+
+          case "/":
+            result = Num1 / Num2;
+            alert(`the division of ${Num1} and ${Num2} = ${result}`);
+            break;
+
+          case "%":
+            result = Num1 % Num2;
+            alert(`the modulus of ${Num1} and ${Num2} = ${result}`);
+            break;
+
+          default:
+            alert("Wrong operator");
+        }
+        Num1 = result;
+        operator = prompt("Please enter the operator:");
+      } while (operator);
+    </script>
+  </body>
+</html>
