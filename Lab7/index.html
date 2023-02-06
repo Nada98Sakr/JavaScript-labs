@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            outline: none;
+            font-family: 'Roboto', sans-serif;
+        }
+        body{
+            background: linear-gradient(rgba(0, 0, 0, 0.60), rgba(0, 0, 0, 0.60)), url("landing.jpg");
+            padding: 70px 100px;
+        }
+
+        form{
+            width: 40%;
+            margin: 0 auto;
+            border: 1px solid ;
+            padding: 100px 50px;
+            background: rgba(0,0,0,0.8);
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.3);
+        }
+        label{
+            display: block;
+            color: #c5ecfd;
+        }
+        input{
+            width: 100%;
+            margin: 10px 0 20px;
+            background: transparent;
+            border: none;
+            border-bottom: 2px solid #c5ecfd;
+            padding: 10px;
+            color: #c5ecfd;
+        }
+
+        #userEmail:valid,
+        #userName:valid{
+            border-bottom: 2px solid green;
+        }
+
+        div{
+            color: #c5ecfd;
+            font-size: 11px;
+            padding-bottom: 25px;
+        }
+
+        #userName:valid+ .userNameDiv,
+        #userEmail:valid+ .emailDiv{
+            display: none;
+        }
+
+        button{
+            background: rgb(15 116 143 / 70%);
+            text-align: center;
+            padding: 15px 30px;
+            border-radius: 5px;
+            color: #fff;
+            cursor: pointer;
+            text-transform: uppercase;
+            border: none;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <form action="./page2.html">
+        <label for="userName">Username:</label>
+        <input type="text" name="userName" id="userName" pattern="[A-Za-z]{2,}" placeholder="enter your username" required>
+        <div class="userNameDiv">The required user name can only be a set of characters</div>
+        <label for="email">Email</label>
+        <input type="email" name="userEmail" id="userEmail" placeholder="enter your email" required>
+        <div class="emailDiv">The required email may not inclue any special characters other than @</div>
+        <button id="btn">change</button>
+    </form>
+    <script>
+        let btn = document.getElementById("btn");
+
+        btn.addEventListener("click", () => {
+            let userName = document.getElementById("userName").value,
+                userEmail = document.getElementById("userEmail").value;
+            localStorage.setItem("userName", userName);
+            localStorage.setItem("userEmail", userEmail);
+        });
+
+        
+    </script>
+</body>
+</html>
