@@ -1,0 +1,40 @@
+body{
+    height: 100vh;
+    background: linear-gradient(#292e49, #536976, #bbd2c5);
+    /* background: linear-gradient(rgba(0, 0, 0, 0.60), rgba(0, 0, 0, 0.60)), url("./landing.jpg"); */
+    padding-top: 70px;
+
+}
+i, input[type= submit]{
+    cursor: pointer;
+}
+.ItsDone{
+    text-decoration: line-through;
+}
+.form-floating{
+    position: relative;
+}
+
+.form-floating .bi{
+    position: absolute;
+    left: 0.5rem;
+    top: 0.5rem;
+}
+.form-floating label,
+.form-floating .form-conrol{
+    left: 0.5rem;
+    padding-left: 3.5rem;
+    color: lightgray !important; 
+}
+#floatingName{
+    padding-left: 3.5rem;
+}
+.form-control:focus {
+    box-shadow:none;
+}
+
+.card,
+input,
+li{
+    background-color: rgba(0,0,0,0.6) !important;
+}

@@ -15,61 +15,27 @@
         integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" 
         crossorigin="anonymous"
     >
-    <style>
-        body{
-            height: 100vh;
-            background: linear-gradient(#292e49, #536976, #bbd2c5);
-            padding-top: 70px;
-            
-        }
-        i, input[type= submit]{
-            cursor: pointer;
-        }
-    </style>
+    <link rel="stylesheet" href="./style.css">
 </head>
 <body >
-    <section class="container-fluid row justify-content-center">
+    <section class="container-fluid row justify-content-center" style="align-items: center;">
         <h2 class="display-4 text-center text-white pb-5">TODO LIST</h2>
-        <div class="container row justify-content-center" style="width: fit-content;">
-            <div class="card col-12 w-75 mb-2 bg-dark">
-                <div class="card-body">
-                    <form class="row justify-content-between">
-                        <div class="col-9 d-flex">
-                            <label class="my-auto me-3 fs-3" for="new"><i class="bi bi-plus-circle text-white"></i></label>
-                            <input type="text" name="newTask" class="form-control w-100" id="new" placeholder="add new task">
-                        </div>
-                        <div class="col-auto">
-                        <button type="submit" class="btn btn-primary">ADD </button>
-                        </div>
-                    </form>
-                </div>
+        <div class="container d-flex flex-column p-5 w-50 ">
+            <div class="card col-12 w-100 mb-3">
+                <form class="col-12 w-100">
+                    <div class="form-floating">
+                        <i class="bi bi-plus-circle text-white ms-2" style="font-size: 25px;"></i>
+                        <input type="text" class="form-control w-100 border-0 text-white" placeholder="Add new task" id="floatingName">
+                        <label for="floatingName">Add new task</label>
+                    </div>
+                </form>
             </div>
 
-            <div class="card col-12 w-75 bg-dark">
+            <div class="card col-12 w-100">
                 <ul class="list-group list-group-flush">
-                    <li class="list-group-item d-flex bg-dark text-white justify-content-between">
-                        <p>Attend Lec3 </p>
-                        <div class="check">
-                            <i class="bi bi-check-square-fill text-success done"></i>
-                            <i class="bi bi-x-square-fill text-danger notDone"></i>
-                        </div>
-                    </li>
-
-                    <li class="list-group-item d-flex bg-dark text-white justify-content-between ">
-                        <p>Compete Task1</p>
-                        <div class="check">
-                            <i class="bi bi-check-square-fill text-success done"></i>
-                            <i class="bi bi-x-square-fill text-danger notDone"></i>
-                        </div>
-                    </li>
-
-                    <li class="list-group-item d-flex bg-dark text-white justify-content-between ">
-                        <p>Compete Lab1</p>
-                        <div class="check">
-                            <i class="bi bi-check-square-fill text-success done"></i>
-                            <i class="bi bi-x-square-fill text-danger notDone"></i>
-                        </div>
-                    </li>
+                </ul>
+                <ul class="NoData list-group list-group-flush" style="display: none;">
+                    <li class="list-group-item d-flex text-white">No tasks exist</li>
                 </ul>
             </div>
         </div>
