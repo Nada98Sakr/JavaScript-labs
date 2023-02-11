@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        .sliderContainer{
+            position: relative;
+            width: 60%;
+            height: 50vh;
+            margin: 150px auto;
+        }
+        .slide{
+            width: 100%;
+            height: 100%;
+            display: none;
+            margin: auto 0;
+        }
+        image{
+            width: 100%;
+            height: 100%;
+        }
+        .prev, .next {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            width: auto;
+            padding: 16px;
+            margin-top: -22px;
+            color: white;
+            font-weight: bold;
+            font-size: 20px;
+            transition: 0.6s ease;
+            border-radius: 0 3px 3px 0;
+        }
+        .next {
+            right: 0;
+            border-radius: 3px 0 0 3px;
+        }
+        .prev:hover, .next:hover {
+            background-color: #f1f1f1;
+            color: black;
+        }
+    </style>
+</head>
+<body>
+    <div class="sliderContainer">
+        <div class="slide" style="display: block; background-image: url('./images/img1.jpg'); background-size: cover;">
+        </div>
+        <div class="slide" style="background-image: url('./images/img2.jpg'); background-size: cover;">
+        </div>
+        <div class="slide" style="background-image: url('./images/img3.jpg'); background-size: cover;">
+        </div>
+        <a class="prev" onclick="plusSlides(-1)">❮</a>
+        <a class="next" onclick="plusSlides(1)">❯</a>
+    </div>
+
+    <script>
+        let slider = document.querySelector(".sliderContainer");
+        let slides = document.querySelectorAll(".slide");
+        let SlideIndex = 0;
+
+        function MoveSlides(n){
+            SlideIndex += n;
+            if(SlideIndex >= slides.length) SlideIndex = 0;
+            if(SlideIndex < 0) SlideIndex = slides.length - 1;
+            for(let i=0; i<slides.length; i++){
+                slides[i].style.display = "none";
+            }
+            slides[SlideIndex].style.display = "block";
+        }
+
+        function plusSlides(n){
+            MoveSlides(n)
+        }
+    </script>
+</body>
+</html>

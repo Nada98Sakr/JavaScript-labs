@@ -30,12 +30,12 @@ function InsertHTMLList(task){
     AllList.insertAdjacentHTML(
         "beforeend",
         `<li class="list-group-item d-flex text-white justify-content-between">
-                <p class="${task.status}">${task.taskName}</p>
-                <div class="check">
-                <i class="bi bi-check-square-fill text-success done"></i>
-                <i class="bi bi-x-square-fill text-danger notDone"></i>
-                </div>
-            </li>`
+            <p class="${task.status}">${task.taskName}</p>
+            <div class="check">
+            <i class="bi bi-check-square-fill text-success done"></i>
+            <i class="bi bi-x-square-fill text-danger notDone"></i>
+            </div>
+        </li>`
     );
 }
 

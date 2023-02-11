@@ -10,6 +10,7 @@ i, input[type= submit]{
 }
 .ItsDone{
     text-decoration: line-through;
+    color: lightgray !important; 
 }
 .form-floating{
     position: relative;
@@ -26,6 +27,7 @@ i, input[type= submit]{
     padding-left: 3.5rem;
     color: lightgray !important; 
 }
+
 #floatingName{
     padding-left: 3.5rem;
 }

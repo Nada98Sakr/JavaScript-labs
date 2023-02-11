@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href='https://fonts.googleapis.com/css?family=Orbitron' rel='stylesheet' type='text/css'>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        .digitalClock{
+            border: 30px solid white;
+            width: 600px;
+            height: 190px;
+            padding: 20px;
+            margin: 0 auto;
+        }
+        .days{
+            color: darkgrey;
+            display: flex;
+            justify-content: space-between;
+            padding-bottom: 20px;
+        }
+        #alarmBtn{
+            margin-top: 20px;
+            width: 100%;
+            background: none;
+            border: none;
+            font-size: 20px;
+            cursor: pointer;
+            color: rgb(121, 36, 36);
+        }
+        #alarmSec{
+            position: absolute;
+            width: 100%;
+            top: 25%;
+            display: none;
+        }
+        .active{
+            color: black;
+        }
+        .timeCont{
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+        }
+        .time{
+            font-size: 40px;
+        }
+        h2{
+            padding-bottom: 20px;
+        }
+        .alarmCon{
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+        }
+        .alarmCon div{
+            width: fit-content;
+            background: lightgray;
+            padding: 10px 20px;
+            text-align: center;
+        }
+        .Alarm{
+            width: fit-content;
+            margin: 0 auto;
+            padding: 30px;
+            background: white;
+            position: relative;
+        }
+        .close{
+            position: absolute;
+            border-radius: 50%;
+            background-color: firebrick;
+            top: -20px;
+            right: -20px;
+            z-index: 2;
+            width: 40px;
+            height: 40px;
+            color: white;
+            cursor: pointer;
+            padding: 10px;
+        }
+        input[type= number]{
+            padding: 10px;
+            width: 55px;
+            text-align: center;
+            border: none;
+            margin-top: 10px;
+            /* -moz-appearance: textfield; */
+        }
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+        input:focus{
+            outline: none;
+        }
+        input[type= submit]{
+            padding: 5px 10px;
+            border: none;
+            color: white;
+            margin-top: 20px;
+            cursor: pointer;
+        }
+        .SetBtn{
+            background-color: lightseagreen;
+        }
+        .clrBtn{
+            background-color:firebrick ;
+        }
+    </style>
+</head>
+<body>
+    <section style="background-color: lightgray; height: 100vh; position: relative; padding: 200px 0;">
+        <section  class="clockSec" style="width: 100%; margin: 0 auto ;">
+            <div class="digitalClock">
+                <div class="days">
+                    <p class="1">MON</p>
+                    <p class="2">TUE</p>
+                    <p class="3">WED</p>
+                    <p class="4">THU</p>
+                    <p class="5">FRI</p>
+                    <p class="6">SAT</p>
+                    <p class="7">SUN</p>
+                </div>
+                <div class="timeCont">
+                    <p style="color: black;">⏰</p>
+                    <p class="time" style="font-family: 'Orbitron', sans-serif;"></p>
+                    <p class="session"></p>
+                </div>
+            </div>
+            <button id="alarmBtn">Set alarm</button>
+        </section>
+
+        <section id="alarmSec" style="text-align: center; text-transform: uppercase; ">
+            <form class="Alarm">
+                <div class="close">X</div>
+                <h2>Set Alarm after</h2>
+                <div class="alarmCon">
+                    <div class="hours">
+                        <p>hr</p>
+                        <input type="number" placeholder="00" class="hrInp" min="0" max="12">
+                    </div>
+                    <div class="mins">
+                        <p>min</p>
+                        <input type="number" placeholder="00" class="minInp" min="0" max="59">
+                    </div>
+                    <div class="secs">
+                        <p>sec</p>
+                        <input type="number" placeholder="00" class="secInp" min="0" max="59">
+                    </div>
+                </div>
+                <div class="btns">
+                    <input type="submit" value="Set" class="SetBtn">
+                    <input type="submit" value="clear" class="clrBtn">
+                </div>
+            </form>
+        </section>
+    </section>
+
+    <script src="./script.js"></script>
+</body>
+</html>
