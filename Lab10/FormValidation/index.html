@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .Message{
+        box-sizing: border-box;
+        position: absolute;
+        z-index: 2;
+        background-color: rgba(0,0,0,0.9);
+        color: white;
+        text-align: center;
+        padding: 100px;
+        border-radius: 5px;
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container" style="position: relative;">
+      <form action="" class="form">
+        <input type="email" id="input-email" name="email" placeholder="Email" pattern="[A-Za-z0-9]+@[A-Za-z]+\.[A-Za-z]{2,4}$" autocomplete="off" required>
+        <input type="password" id="pass-input" placeholder="Password" placeholder="Password" pattern="(?=^.{8,}$)(?=.*[A-Z])(?=.*[a-z]).*$" autocomplete="off" required/>
+        <input type="submit" value="log in" id="submit-btn" />
+        <p>
+          Not registered ? <span class="special-text">create an account</span>
+        </p>
+      </form>
+      <div class="Message"></div>
+    </div>
+
+    <script src="./script.js" type="module"></script>
+  </body>
+</html>
